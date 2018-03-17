@@ -1,0 +1,24 @@
+<!--pages/first/first.wxml-->
+<view class='container'>
+  <view class='item'>
+    <view class='key'>西瓜{{}}</view>
+    <view bindtap='' class='iconfont,icon-browse1'></view>
+    <view bindtap='' class='iconfont,icon-edit'></view>
+    <view bindtap='Delete' class='iconfont,icon-delete'></view>
+  </view>
+
+  <block wx:for='{{array}}' wx:key=''>
+    <view class='item'>
+      <view class='key'>{{index+1}}</view>
+      <!--index默认为数组的下标  -->
+      <view bindtap='' class='iconfont,icon-browse1'></view>
+      <view bindtap='' class='iconfont,icon-edit'></view>
+      <view bindtap='Delete' class='iconfont,icon-delete'></view>
+    </view>
+  </block>
+
+  <navigator url='../plan/plan'>
+    <view class='iconfont,icon-addition_fill'></view>
+  </navigator>
+  <!-- <view bindtap='Add' class='iconfont,icon-addition'></view> -->
+</view>

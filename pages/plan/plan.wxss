@@ -1,0 +1,7 @@
+/* pages/plan/plan.wxss */
+.input{
+  width: 460rpx;
+}
+.input2{
+  width: 350rpx;
+}

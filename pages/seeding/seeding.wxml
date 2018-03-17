@@ -1,0 +1,100 @@
+<!--pages/seeding/seeding.wxml-->
+<form class='container' bindsubmit='formSubmit' bindreset='formReset'>
+  <view class='topic'>幼苗处理记录填写</view>
+  <view class='item'>
+    <view class='item-key'>植物品种</view>
+    <picker wx:if='{{plant_i==0}}' bindchange='bindPlantChange' value='{{plant_i}}' range='{{array}}'>
+      <view class='item-value,tip'>
+        {{'请选择植物品种'}}
+        <view class='arrow'></view>
+      </view>
+    </picker>
+    <picker wx:else bindchange='bindPlantChange' value='{{plant_i}}' range='{{array}}'>
+      <view class='item-value'>
+        {{array[plant_i]}}
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class='item'>
+    <view class='item-key'>批次</view>
+    <picker wx:if="{{batch_i==0}}" bindchange='bindBatchChange' value='{{batch_i}}' range='{{batch}}'>
+      <view class='item-value,tip'>
+        {{'请选择批次'}}
+        <view class='arrow'></view>
+      </view>
+    </picker>
+    <picker wx:else bindchange='bindBatchChange' value='{{batch_i}}' range='{{batch}}'>
+      <view class='item-value'>
+        {{batch[batch_i]}}
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class='item'>
+    <view class='item-key'>种植时间</view>
+    <picker mode='date' bindchange='bindDateChange'>
+      <view class='item-value'>
+        {{date}}
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class='item'>
+    <view class='item-key'>底肥用料</view>
+    <picker bindchange='bandFertilizerChange' value='{{fertilizer_i}}' range='{{fertilizer}}'>
+      <view class='item-value'>
+        <view></view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class='item'>
+    <view class='item-key'>天气</view>
+    <picker bindchange='' value='' range=''>
+      <view class='item-value,tip'>
+        <view>{{'请选择天气情况'}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+
+  </view>
+
+  <view class='item'>
+    <view class='item-key'>底肥用量</view>
+    <input class='input' type='digit' placeholder='请输入底肥用量'></input>
+    <view>(g/m2)</view>
+  </view>
+
+  <view class='item'>
+    <view class='item-key'>基质用药</view>
+    <picker bindchange='bandInsecticideChange' value='{{insecticide_i}}' range='{{insecticide}}'>
+      <view class='item-value'>
+        <view>{{insecticide[insecticide_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view wx:if='{{insecticide_i!=0}}' class='item'>
+    <view class='item-key'>药剂用量</view>
+    <input class='input' type='digit' placeholder='请输入药剂用量'></input>
+    <view>(g/m2)</view>
+  </view>
+  <!-- <view class='item'>
+ <view class='iconfont,icon-edit'>编辑</view>
+ <view class='iconfont,icon-delete'>编辑</view>
+ <view class='iconfont,icon-add'>编辑</view>
+ </view>  -->
+
+  <view class="btn_top">
+    <button type='primary' formType="submit">完成</button>
+  </view>
+  <view class="btn_top">
+    <button formType="reset">重置</button>
+  </view>
+</form>

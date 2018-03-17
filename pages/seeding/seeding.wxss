@@ -1,0 +1,7 @@
+/* pages/seeding/seeding.wxss */
+.input{
+  width: 339rpx;
+  /* border-radius: 3px;
+  border: solid 1px #999;
+  padding: 0rpx 10rpx; */
+}

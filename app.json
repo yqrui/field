@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/plan/plan",
+    "pages/seeding/seeding",
+    "pages/index/index",
+    "pages/colonization/colonization",
+    "pages/planting/planting",
+    "pages/harvest/harvest",
+    "pages/detection/detection",
+    "pages/storage/storage",
+    "pages/sales/sales",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f5f5f5",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}
