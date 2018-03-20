@@ -15,9 +15,9 @@
 
   <view class='item'>
     <view class='item-key'>种植地点</view>
-    <picker bindchange='bandLand' name='land' value='{{land_i}}' range='{{land}}'>
-      <view  class='item-value'>
-        <view wx:if='{{land_i==0}}' class='tip'>{{'请选择种植地点'}}</view>
+    <picker bindchange='bandLand' name='land' range='{{land}}' value='{{land_i}}'>
+      <view class='item-value'>
+        <view wx:if='{{land_i==0}}' class='tip'>请选择种植地点</view>
         <view wx:else>{{land[land_i]}}</view>
         <view class='arrow'></view>
       </view>
@@ -30,9 +30,10 @@
 
   <view class='item'>
     <view class='item-key'>开始时间</view>
-    <picker mode='date' bindchange='' name='start' value='' range=''>
-      <view class='item-value,tip'>
-        {{'请选择开始时间'}}
+    <picker mode='date' bindchange='bindStart' name='start' start='' end=''>
+      <view class='item-value'>
+        <view wx:if='{{start_f}}' class='tip'>请选择开始时间</view>
+        <view wx:else>{{start}}</view>
         <view class='arrow'></view>
       </view>
     </picker>
@@ -40,9 +41,10 @@
 
   <view class='item'>
     <view class='item-key'>结束时间</view>
-    <picker mode='date' bindchange='' name='end' value='' range=''>
-      <view class='item-value,tip'>
-        {{'请选择结束时间'}}
+    <picker mode='date' bindchange='bindEnd' name='end' value='' start='' end=''>
+      <view class='item-value'>     
+        <view wx:if='{{end_f}}' class='tip'>请选择结束时间</view>
+        <view wx:else>{{end}}</view>
         <view class='arrow'></view>
       </view>
     </picker>

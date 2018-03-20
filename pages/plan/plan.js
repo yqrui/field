@@ -5,8 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    start_f:true,
+    end_f: true,
     land_i:0,
-    land:['请选择','A区','B区','C区']
+    land:['请选择','A区','B区','C区'],
+    start:'',
+    end:''
   },
 
   /**
@@ -70,8 +74,28 @@ Page({
       land_i: e.detail.value
     })
   },
+  bindStart: function(e){
+    // console.log('开始时间',e.detail.value)
+    this.setData({
+      start_f:false,
+      start: e.detail.value
+    })
+  },
+  bindEnd: function (e) {
+    this.setData({
+      end_f: false,
+      end: e.detail.value
+    })
+  },
 
   formSubmit: function(e){
-    console.log(e.detail.value)
+    console.log(this.data.land[e.detail.value.land])
+  },
+  formReset: function(e){
+    this.setData({
+      land_i:0,
+      start_f: true,
+      end_f: true,
+    })
   }
 })
