@@ -1,5 +1,8 @@
 // pages/seeding/seeding.js
 const util = require('../../utils/util.js')
+  // ./ 当前目录
+  //   ../ 父级目录
+  // / 根目录
 
 Page({
 
@@ -7,13 +10,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading:false,
     normal:'请填写资料',
-    hint:'',
+    hint:'请填写资料',
     plant_i:0,
     plant: ['-请选择-','水稻', '玉米', '空心菜', '土豆','番薯'],
-    date:'',
     batch_i: 0,
     batch: ['-请选择-','B01', 'B02', 'B03', 'B04', 'B05'],
+    date:'',
     weather_i:0,
     weather: ['-请选择-','晴朗','多云','小雨','中雨','暴雨'],
     fertilizer_i:0,
@@ -38,7 +42,6 @@ Page({
     // console.log(util.formatDate(new Date()));
     this.setData({
       date: util.formatDate(new Date()),
-      hint: this.data.normal
     })
   },
 
@@ -60,7 +63,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
@@ -158,56 +161,77 @@ Page({
   },
 
   formSubmit: function(e){//event
-    console.log("表单数据为",e.detail.value)
-    if (e.detail.value.plant == 0){
-      // console.log("kong")
-      this.setData({
-        isspace: true,
-        plantspace: true,
-        hint: '植物品种不能为空'
-      })
-    } else
-     if (e.detail.value.batch == 0){
-      this.setData({
-        isspace: true,
-        batchspace: true,
-        hint: '批次不能为空'
-      })
-    } else 
-    if (e.detail.value.weather == 0) {
-      this.setData({
-        isspace: true,
-        weatherspace: true,
-        hint: '天气不能为空'
-      })
-    } else 
-    if (e.detail.value.fertilizer == 0) {
-      this.setData({
-        isspace: true,
-        fertilizerspace: true,
-        hint: '底肥用料不能为空'
-      })
-    } else 
-    if (e.detail.value.f_consumption == "") {
-      this.setData({
-        isspace: true,
-        f_c_space: true,
-        hint: '底肥用量不能为空'
-      })
-    } else 
+  var that=this
+    // console.log("表单数据为",e.detail.value)
+    // if (e.detail.value.plant == 0){
+    //   // console.log("kong")
+    //   this.setData({
+    //     isspace: true,
+    //     plantspace: true,
+    //     hint: '植物品种不能为空'
+    //   })
+    // } else
+    //  if (e.detail.value.batch == 0){
+    //   this.setData({
+    //     isspace: true,
+    //     batchspace: true,
+    //     hint: '批次不能为空'
+    //   })
+    // } else 
+    // if (e.detail.value.weather == 0) {
+    //   this.setData({
+    //     isspace: true,
+    //     weatherspace: true,
+    //     hint: '天气不能为空'
+    //   })
+    // } else 
+    // if (e.detail.value.fertilizer == 0) {
+    //   this.setData({
+    //     isspace: true,
+    //     fertilizerspace: true,
+    //     hint: '底肥用料不能为空'
+    //   })
+    // } else 
+    // if (e.detail.value.f_consumption == "") {
+    //   this.setData({
+    //     isspace: true,
+    //     f_c_space: true,
+    //     hint: '底肥用量不能为空'
+    //   })
+    // } else 
     if (e.detail.value.pesticide == 0) {
       this.setData({
         isspace: true,
         pesticidespace: true,
         hint: '基质用药不能为空'
       })
-    } else if (e.detail.value.p_consumption == 0) {
+    } else 
+    if (e.detail.value.p_consumption == "") {
       this.setData({
         isspace: true,
         p_c_space: true,
         hint: '药剂用量不能为空'
       })
     } else{
+      that.setData({
+        loading: true
+      })
+      // setTimeout(function () {
+      //   that.setData({
+      //     loading: false
+      //   })
+      //   wx.showToast({
+      //     title: '发送成功',
+      //     icon: 'success',
+      //     duration: 2000
+      //   })
+      //   // that.update();
+      // }, 1000);
+      // setTimeout(function () {//设置延时
+      //     wx.navigateTo({
+      //       url: '../index/index'
+      //     })
+      // }, 2000);
       wx.request({
         url: 'http://localhost:8080/mini/servlet/MiniServlet',
         data:{
@@ -228,11 +252,30 @@ Page({
         //json格式且method方法为POST,不能通过request.getParameter获取数据
         //  x-www-form-urlencoded
         success:function(res){
+          that.setData({
+            loading: false
+          })
+          wx.showToast({
+            title: '提交成功',
+            icon: 'success',
+            // duration: 2000
+          })
+          setTimeout(function () {
+            wx.navigateTo({
+              url: '../index/index'
+            })
+          }, 500);
           console.log("成功接收数据:")
           console.log(res.data)
         },
         fail:function(){
-
+          that.setData({
+            loading: false
+          })
+          wx.showToast({
+            title: '未知错误',
+            icon: 'none'
+          }) 
         },
         complete: function(){}
       })
@@ -256,7 +299,8 @@ Page({
       fertilizerspace: false,
       f_c_space: false,
       pesticidespace: false,
-      p_c_space: false
+      p_c_space: false,
+      loading: false
     })
   }
 

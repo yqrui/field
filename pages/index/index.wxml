@@ -1,12 +1,24 @@
 <!--pages/first/first.wxml-->
 <view class='container'>
   <view class='item'>
-    <view class='key'>西瓜{{}}</view>
-    <view bindtap='' class='iconfont,icon-browse1'></view>
-    <view bindtap='' class='iconfont,icon-edit'></view>
-    <view bindtap='Delete' class='iconfont,icon-delete'></view>
+    <input></input><view bindtap='Add' class='iconfont,icon-browse1'></view>
   </view>
-
+    <navigator url='../detail/detail'>
+      <view bindtap='bindChange' class='item' hover-class='click' hover-stay-time='150'>
+        <view></view>
+        <view class='key'>西瓜{{}}</view>
+        <view class='iconfont,icon-browse1'></view>
+        <!-- <view bindtap='' class='iconfont,icon-edit'></view>
+    <view bindtap='Delete' class='iconfont,icon-delete'></view> -->
+      </view>
+    </navigator>
+    <view bindtap='bindChange' class='item' hover-class='click' hover-stay-time='150'>
+      <view></view>
+      <view class='key'>西瓜{{}}</view>
+      <view class='iconfont,icon-browse1'></view>
+      <!-- <view bindtap='' class='iconfont,icon-edit'></view>
+  <view bindtap='Delete' class='iconfont,icon-delete'></view> -->
+    </view>
   <block wx:for='{{array}}' wx:key=''>
     <view class='item'>
       <view class='key'>{{index+1}}</view>

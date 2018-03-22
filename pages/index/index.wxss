@@ -1,19 +1,16 @@
 /* pages/first/first.wxss */
-.item{
-   justify-content: space-between;
+.miniicon{
+   /* justify-content: space-between; */
    /* margin-bottom: 10px; */
 }
 .key{
   /* border: solid 1px blue;  */
-  width: 300rpx;
+  width: 550rpx;
 }
-/* .icon-addition{
-  position: fixed;
-  bottom: 40rpx;
-  right: 160rpx;
-  font-size: 120rpx;
-  color: #363636;
-}   */
+.click{
+  background-color: #ebebeb;
+  border: solid 1px #d7d7d7;
+}
 .icon-addition_fill{
   position: fixed;/*相对屏幕*/
   bottom: 40rpx;

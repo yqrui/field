@@ -4,6 +4,7 @@
     <view class='topic-area'>育苗管理</view>
     <view class="{{isspace?'topic-area,hint':'topic-area'}}">{{hint}}</view>
   </view>
+  
   <view class="{{plantspace?'item,space':'item'}}">
     <view class='item-key'>植物品种</view>
     <picker bindchange='bindPlant' name='plant' value='{{plant_i}}' range='{{plant}}'>
@@ -82,7 +83,9 @@
   </view>
 
   <view class="btn_top">
-    <button type='primary' formType="submit">完成</button>
+    <button type='primary' formType="submit">
+      <view class="{{loading?'weui-loading':''}}"></view>提交
+    </button>
   </view>
   <view class="btn_top">
     <button formType="reset">重置</button>

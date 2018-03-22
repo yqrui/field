@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/seeding/seeding",
-    "pages/plan/plan",
-    "pages/index/index",
     "pages/colonization/colonization",
+    "pages/index/index",
+    "pages/plan/plan",
+    "pages/seeding/seeding",
     "pages/planting/planting",
     "pages/harvest/harvest",
     "pages/detection/detection",

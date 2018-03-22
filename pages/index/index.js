@@ -1,10 +1,12 @@
 // pages/first/first.js
+const app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isclicked: false,
     array:[],
     obj:{
       id:0,
@@ -16,8 +18,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function () {
+
   },
 
   /**
@@ -67,6 +69,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  bindChange: function () {
+    console.log('点击了')
+    isclicked: true
   },
 
   Delete: function(){

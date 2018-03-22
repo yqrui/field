@@ -1,1 +1,4 @@
 /* pages/colonization/colonization.wxss */
+.input{
+  width: 320rpx;
+}

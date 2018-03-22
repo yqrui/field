@@ -1,19 +1,21 @@
 <!--pages/plan/plan.wxml-->
 <!--pages/seeding/seeding.wxml-->
 <form class='container' bindsubmit='formSubmit' bindreset='formReset'>
-  <view class='topic'>添加种植计划</view>
-
-  <view class='item'>
+  <view class='topic'>
+    <view class='topic-area'>种植计划管理</view>
+    <view class="{{isspace?'topic-area,hint':'topic-area'}}">{{hint}}</view>
+  </view>
+  <view class="{{plantspace?'item,space':'item'}}">
     <view class='item-key'>植物品种</view>
-    <input class='input' name='plant' placeholder='请输入植物品种'></input>
+    <input bindfocus='bandPlant' class='input' name='plant' placeholder='请输入植物品种'></input>
   </view>
 
-  <view class='item'>
+  <view class="{{batchspace?'item,space':'item'}}">
     <view class='item-key'>批次</view>
-    <input class='input' name='batch' placeholder='请输入批次'></input>
+    <input bindfocus='bandBatch' class='input' name='batch' placeholder='请输入批次'></input>
   </view>
 
-  <view class='item'>
+  <view class="{{landspace?'item,space':'item'}}">
     <view class='item-key'>种植地点</view>
     <picker bindchange='bandLand' name='land' range='{{land}}' value='{{land_i}}'>
       <view class='item-value'>
@@ -23,41 +25,45 @@
       </view>
     </picker>
   </view>
-  <view class='item'>
+  
+  <view class="{{amountspace?'item,space':'item'}}">
     <view class='item-key'>种植数量</view>
-    <input class='input2' name='amount' type='number' placeholder='请输入种植数量'></input>
+    <input bindfocus='bindAmount' class='input2' name='amount' type='number' placeholder='请输入种植数量'></input>
+    <view></view>
   </view>
 
-  <view class='item'>
+  <view class="{{startspace?'item,space':'item'}}">
     <view class='item-key'>开始时间</view>
     <picker mode='date' bindchange='bindStart' name='start' start='' end=''>
       <view class='item-value'>
-        <view wx:if='{{start_f}}' class='tip'>请选择开始时间</view>
+        <view wx:if='{{startflag}}' class='tip'>请选择开始时间</view>
         <view wx:else>{{start}}</view>
         <view class='arrow'></view>
       </view>
     </picker>
   </view>
 
-  <view class='item'>
+  <view class="{{endspace?'item,space':'item'}}">
     <view class='item-key'>结束时间</view>
     <picker mode='date' bindchange='bindEnd' name='end' value='' start='' end=''>
       <view class='item-value'>     
-        <view wx:if='{{end_f}}' class='tip'>请选择结束时间</view>
+        <view wx:if='{{endflag}}' class='tip'>请选择结束时间</view>
         <view wx:else>{{end}}</view>
         <view class='arrow'></view>
       </view>
     </picker>
   </view>
 
-  <view class='item'>
+  <view class="{{outputspace?'item,space':'item'}}">
     <view class='item-key'>预期产量</view>
-    <input name='' class='input2' name='output' type='digit' placeholder='请输入预期产量'></input>
+    <input bindfocus='bindOutput' class='input2' name='output' type='digit' placeholder='请输入预期产量'></input>
     <view>kg/亩</view>
   </view>
 
   <view class="btn_top">
-    <button type='primary' formType="submit">完成</button>
+    <button type='primary' formType="submit">
+      <view class="{{loading?'weui-loading':''}}"></view>提交
+    </button>
   </view>
   <view class="btn_top">
     <button formType="reset">重置</button>

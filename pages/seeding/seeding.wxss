@@ -3,6 +3,3 @@
   width: 320rpx;
   /* border: solid 1px #999; */
 }
-.space{
-  border: solid 1px red;  
-}

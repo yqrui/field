@@ -1,2 +1,11 @@
 <!--pages/detection/detection.wxml-->
-<text>pages/detection/detection.wxml</text>
+<form class='container' bindsubmit='formSubmit' bindreset='formReset'>
+  <view class='topic'>
+    <view class='topic-area'>种植计划管理</view>
+    <view class="{{isspace?'topic-area,hint':'topic-area'}}">{{hint}}</view>
+  </view>
+  <view class="{{plantspace?'item,space':'item'}}">
+    <view class='item-key'>植物品种</view>
+    <input bindfocus='bandPlant' class='input' name='plant' placeholder='请输入植物品种'></input>
+  </view>
+</form>

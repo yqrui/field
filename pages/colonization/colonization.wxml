@@ -1,2 +1,69 @@
 <!--pages/colonization/colonization.wxml-->
-<text>pages/colonization/colonization.wxml</text>
+<form class='container' bindsubmit='formSubmit' bindreset='formReset'>
+  <view class='topic'>
+    <view class='topic-area'>定植管理</view>
+    <view class="{{isspace?'topic-area,hint':'topic-area'}}">{{hint}}</view>
+  </view>
+  <view class="{{plantspace?'item,space':'item'}}">
+    <view class='item-key'>植物品种</view>
+    <input bindfocus='' class='input' name='plant' placeholder='请输入植物品种'></input>
+  </view>
+
+  <view class="{{landspace?'item,space':'item'}}">
+    <view class='item-key'>种植地点</view>
+    <picker bindchange='bindLand' name='land' range='{{land}}' value='{{land_i}}'>
+      <view class='item-value'>
+        <view wx:if='{{land_i==0}}' class='tip'>请选择种植地点</view>
+        <view wx:else>{{land[land_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class='item'>
+    <view class='item-key'>种植时间</view>
+    <picker bindchange='bindTime' mode='date' name='time' start='' end=''>
+      <view class='item-value'>
+        <view>{{time}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{weatherspace?'item,space':'item'}}">
+    <view class='item-key'>天气</view>
+    <picker bindchange='bindWeather' name='weather' value='{{weather_i}}' range='{{weather}}'>
+      <view class='item-value'>
+        <view wx:if='{{weather_i==0}}' class='tip'>请选择天气情况</view>
+        <view wx:else>{{weather[weather_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{fertilizerspace?'item,space':'item'}}">
+    <view class='item-key'>底肥用料</view>
+    <picker bindchange='bandFertilizer' name='fertilizer' value='{{fertilizer_i}}' range='{{fertilizer}}'>
+      <view class='item-value'>
+        <view wx:if='{{fertilizer_i==0}}' class='tip'>请选择底肥用料</view>
+        <view wx:else>{{fertilizer[fertilizer_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{f_c_space?'item,space':'item'}}">
+    <view class='item-key'>底肥用量</view>
+    <input bindfocus='bindFconsumption' class='input' name='f_consumption' type='digit' placeholder='请输入底肥用量'></input>
+    <view>(kg/m2)</view>
+  </view>
+
+  <view class="btn_top">
+    <button type='primary' formType="submit">
+      <view class="{{loading?'weui-loading':''}}"></view>提交
+    </button>
+  </view>
+  <view class="btn_top">
+    <button formType="reset">重置</button>
+  </view>
+</form>
