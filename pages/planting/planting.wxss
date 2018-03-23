@@ -1,1 +1,7 @@
 /* pages/planting/planting.wxss */
+.input{
+  width: 460rpx;
+}
+.input2{
+  width: 320rpx;
+}

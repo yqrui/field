@@ -1,2 +1,82 @@
 <!--pages/planting/planting.wxml-->
-<text>pages/planting/planting.wxml</text>
+<form class='container' bindsubmit='formSubmit' bindreset='formReset'>
+  <view class='topic'>
+    <view class='topic-area'>栽培管理</view>
+    <view class="{{isspace?'topic-area,hint':'topic-area'}}">{{hint}}</view>
+  </view>
+
+  <view class="{{plantspace?'item,space':'item'}}">
+    <view class='item-key'>植物品种</view>
+    <input bindfocus='' class='input' name='plant' placeholder='请输入植物品种'></input>
+  </view>
+
+  <view class="{{weatherspace?'item,space':'item'}}">
+    <view class='item-key'>天气</view>
+    <picker bindchange='bindWeather' name='weather' value='{{weather_i}}' range='{{weather}}'>
+      <view class='item-value'>
+        <view wx:if='{{weather_i==0}}' class='tip'>请选择天气情况</view>
+        <view wx:else>{{weather[weather_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{temperaturespace?'item,space':'item'}}">
+    <view class='item-key'>温度</view>
+    <picker bindchange='bindTemperature' name='temperature' mode='multiSelector' range='{{temperaturearray}}' value='{{temperature_i}}'>
+      <view class='item-value'>
+        <view wx:if='{{tptspace}}' class='tip'>请选择温度</view>
+        <view wx:else>{{temperature}}°C</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{humidityspace?'item,space':'item'}}">
+    <view class='item-key'>相对湿度</view>
+    <input bindfocus='bindHumidity' class='input2' name='humidity' placeholder='请输入相对湿度' type='digit'></input>
+    <view>%</view>
+  </view>
+
+  <view class="{{wateringspace?'item,space':'item'}}">
+    <view class='item-key'>浇水</view>
+    <view class='item-value'>
+      <view></view>
+      <switch name='watering' checked='true' bindchange='bindWatering'></switch>
+    </view>
+  </view>
+
+  <view wx:if='{{watering}}' class="{{w_c_space?'item,space':'item'}}">
+    <view class='item-key'>浇水量</view>
+    <input bindfocus='bindWconsumption' class='input2' name='w_consumption' placeholder='请输入浇水量'></input>
+    <view>kg/亩</view>
+  </view>
+
+  <view wx:if='{{watering}}' class="{{methodspace?'item,space':'item'}}">
+    <view class='item-key'>浇水方式</view>
+    <picker bindchange='bindMethod' name='method' value='{{method_i}}' range='{{method}}'>
+      <view class='item-value'>
+        <view wx:if='{{method_i==0}}' class='tip'>请选择浇水方式</view>
+        <view wx:else>{{method[method_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{weedingspace?'item,space':'item'}}">
+    <view class='item-key'>除草</view>
+    <view class='item-value'>
+      <view></view>
+      <switch checked='true' bindchange='' name='weeding'></switch>
+    </view>
+  </view>
+
+  <view class="btn_top">
+    <button type='primary' formType="submit">
+      <view class="{{loading?'weui-loading':''}}"></view>提交
+    </button>
+  </view>
+  <view class="btn_top">
+    <button formType="reset">重置</button>
+  </view>
+</form>
