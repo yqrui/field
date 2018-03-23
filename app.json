@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/detection/detection",
     "pages/harvest/harvest",
     "pages/planting/planting",
     "pages/colonization/colonization",
     "pages/index/index",
     "pages/plan/plan",
     "pages/seeding/seeding",
-    "pages/detection/detection",
     "pages/storage/storage",
     "pages/logs/logs"
   ],

@@ -1,1 +1,4 @@
 /* pages/detection/detection.wxss */
+.input2{
+  width: 460rpx;
+}

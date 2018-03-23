@@ -1,11 +1,53 @@
 <!--pages/detection/detection.wxml-->
 <form class='container' bindsubmit='formSubmit' bindreset='formReset'>
   <view class='topic'>
-    <view class='topic-area'>种植计划管理</view>
+    <view class='topic-area'>检测管理</view>
     <view class="{{isspace?'topic-area,hint':'topic-area'}}">{{hint}}</view>
   </view>
+
   <view class="{{plantspace?'item,space':'item'}}">
     <view class='item-key'>植物品种</view>
-    <input bindfocus='bandPlant' class='input' name='plant' placeholder='请输入植物品种'></input>
+    <picker bindchange='bindPlant' name='plant' value='{{plant_i}}' range='{{plant}}'>
+      <view class='item-value'>
+        <view wx:if='{{plant_i==0}}' class='tip'>请选择植物品种</view>
+        <view wx:else>{{plant[plant_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
   </view>
+
+  <view class='item'>
+    <view class='item-key'>检测时间</view>
+    <picker mode='date' name='date' bindchange='bindDate' start='' end=''>
+      <view class='item-value'>
+        <view>{{date}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{positionspace?'item,space':'item'}}">
+    <view class='item-key'>取样地点</view>
+    <picker bindchange='bindposition' name='position' value='{{position_i}}' range='{{position}}'>
+      <view class='item-value'>
+        <view wx:if='{{position_i==0}}' class='tip'>请选择取样地点</view>
+        <view wx:else>{{position[position_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{resultspace?'item,space':'item'}}">
+    <view class='item-key'>检测结果</view>
+    <input bindfocus='bindresult' class='input2' name='result' placeholder='请输入检测结果'></input>
+  </view>
+ 
+  <view class="btn_top">
+    <button type='primary' formType="submit">
+      <view class="{{loading?'weui-loading':''}}"></view>提交
+    </button>
+  </view>
+  <view class="btn_top">
+    <button formType="reset">重置</button>
+  </view> 
 </form>
