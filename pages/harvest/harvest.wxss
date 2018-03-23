@@ -1,1 +1,4 @@
 /* pages/harvest/harvest.wxss */
+.input2{
+  width:320rpx;
+}

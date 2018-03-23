@@ -1,2 +1,70 @@
 <!--pages/harvest/harvest.wxml-->
-<text>pages/harvest/harvest.wxml</text>
+<form class='container' bindsubmit='formSubmit' bindreset='formReset'>
+  <view class='topic'>
+    <view class='topic-area'>采收管理</view>
+    <view class="{{isspace?'topic-area,hint':'topic-area'}}">{{hint}}</view>
+  </view>
+
+  <view class="{{plantspace?'item,space':'item'}}">
+    <view class='item-key'>植物品种</view>
+    <picker bindchange='bindPlant' name='plant' value='{{plant_i}}' range='{{plant}}'>
+      <view class='item-value'>
+        <view wx:if='{{plant_i==0}}' class='tip'>请选择植物品种</view>
+        <view wx:else>{{plant[plant_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class='item'>
+    <view class='item-key'>采收日期</view>
+    <picker mode='date' name='time' bindchange='bindDate' start='' end=''>
+      <view class='item-value'>
+        <view>{{date}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{weatherspace?'item,space':'item'}}">
+    <view class='item-key'>天气</view>
+    <picker bindchange='bindWeather' name='weather' value='{{weather_i}}' range='{{weather}}'>
+      <view class='item-value'>
+        <view wx:if='{{weather_i==0}}' class='tip'>请选择天气情况</view>
+        <view wx:else>{{weather[weather_i]}}</view>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+
+  <view class="{{methodspace?'item,space':'item'}}">
+    <view class='item-key'>晾晒方式</view>
+    <input bindfocus='bindMethod' name='method' type='digit' placeholder='请输入晾晒方式'></input>
+  </view>
+
+  <view class="{{areaspace?'item,space':'item'}}">
+    <view class='item-key'>采收面积</view>
+    <input bindfocus='bindarea' class='input2' name='area' type='digit' placeholder='请输入采收面积'></input>
+    <view>亩</view>
+  </view>
+
+  <view class="{{weightspace?'item,space':'item'}}">
+    <view class='item-key'>采收重量</view>
+    <input bindfocus='bindWeight' class='input2' name='weight' type='digit' placeholder='请输入采收重量'></input>
+    <view>kg</view>
+  </view>
+
+  <view class="{{operatorspace?'item,space':'item'}}">
+    <view class='item-key'>采收员</view>
+    <input bindfocus='bindoperator' name='operator' placeholder='请输入采收员'></input>
+  </view>
+
+  <view class="btn_top">
+    <button type='primary' formType="submit">
+      <view class="{{loading?'weui-loading':''}}"></view>提交
+    </button>
+  </view>
+  <view class="btn_top">
+    <button formType="reset">重置</button>
+  </view>
+</form>
